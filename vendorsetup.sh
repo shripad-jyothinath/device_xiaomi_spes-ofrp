@@ -83,12 +83,3 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 fi
 #
 
-# CCACHE
-CCACHE_DIR='/mnt/ccache'
-if [ ! -f /mnt/ccache/ccache.conf ]
-then
-sudo mount --bind /home/shripad/.ccache ${CCACHE_DIR}
-fi
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
-export CCACHE_DIR=${CCACHE_DIR}
