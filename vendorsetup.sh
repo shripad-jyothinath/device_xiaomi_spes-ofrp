@@ -56,8 +56,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 
         # Maintainer
-	export OF_MAINTAINER=Jabiyeff
-	export FOX_VERSION="R11.1"
+	export OF_MAINTAINER=Shripad
+	export FOX_VERSION="R12.1"
 
 	# Use magisk 25.2 for the magisk addon
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/ofrp/device/xiaomi/spes/addon/Magisk.zip
