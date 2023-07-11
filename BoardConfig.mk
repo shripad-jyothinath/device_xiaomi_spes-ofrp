@@ -39,7 +39,8 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     vbmeta_system \
     vendor \
-    vendor_boot
+    vendor_boot \
+    mi_ext
 
 # Bluetooth
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true

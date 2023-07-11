@@ -16,6 +16,11 @@
       "File": "top-app/cpus"
     },
     {
+      "Name": "AudioAppCapacityCPUs",
+      "Controller": "cpuset",
+      "File": "audio-app/cpus"
+    },
+    {
       "Name": "MemStats",
       "Controller": "memory",
       "File": "memory.stat"
@@ -193,6 +198,19 @@
           {
             "Controller": "cpu",
             "Path": "camera-daemon"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AudioAppPerformance",
+      "Actions" : [
+        {
+          "Name" : "JoinCgroup",
+          "Params" :
+          {
+            "Controller": "schedtune",
+            "Path": "audio-app"
           }
         }
       ]
@@ -421,7 +439,6 @@
         }
       ]
     },
-
     {
       "Name": "CameraServiceCapacity",
       "Actions": [
@@ -431,6 +448,85 @@
           {
             "Controller": "cpuset",
             "Path": "camera-daemon"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CameraProcessCapacityLow",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CameraProcessCapacityLower",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background/background"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CameraProcessCapacityLowest",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background/limit"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AudioAppCapacity",
+      "Actions" : [
+        {
+          "Name" : "JoinCgroup",
+          "Params" :
+          {
+            "Controller": "cpuset",
+            "Path": "audio-app"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "BlkIOForeground",
+      "Actions" : [
+        {
+          "Name" : "JoinCgroup",
+          "Params" :
+          {
+            "Controller": "blkio",
+            "Path": ""
+          }
+        }
+      ]
+    },
+    {
+      "Name": "BlkIOBackground",
+      "Actions" : [
+        {
+          "Name" : "JoinCgroup",
+          "Params" :
+          {
+            "Controller": "blkio",
+            "Path": "bg"
           }
         }
       ]
@@ -622,6 +718,19 @@
           }
         }
       ]
+    },
+    {
+      "Name": "MemoryFreezeProcess",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "memory",
+            "Path": "freeze-app"
+          }
+        }
+      ]
     }
   ],
 
@@ -685,6 +794,18 @@
     {
       "Name": "OtaProfiles",
       "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "HighEnergySaving" ]
+    },
+    {
+      "Name": "CPUSET_SP_CAMERA_BACKGROUND",
+      "Profiles": [ "CameraProcessCapacityLow"]
+    },
+    {
+      "Name": "CPUSET_SP_CAMERA_LOWER_BACKGROUND",
+      "Profiles": [ "CameraProcessCapacityLower"]
+    },
+    {
+      "Name": "CPUSET_SP_CAMERA_LIMIT_BACKGROUND",
+      "Profiles": [ "HighEnergySaving", "CameraProcessCapacityLowest", "LowIoPriority", "TimerSlackHigh" ]
     }
   ]
 }
